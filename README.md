@@ -4,13 +4,21 @@ Example project that reproduces [github issue 6377](https://github.com/ionic-tea
 
 ## Issue description
 
-In Android, setting the iframe src with a URL.createObjectURL will result on
-
-![Web behavior](https://raw.githubusercontent.com/psantos9/vue-capacitor-iframe-android/main/public/web-behavior.png)
+In Android, setting the iframe src with a URL.createObjectURL will result on an empty iframe as follows:
+![Empty android iframe](https://raw.githubusercontent.com/psantos9/vue-capacitor-iframe-android/main/public/empty-android-iframe.png)
 
 ![Android behavior](https://raw.githubusercontent.com/psantos9/vue-capacitor-iframe-android/main/public/android-behavior.png)
 
-![Empty android iframe](https://raw.githubusercontent.com/psantos9/vue-capacitor-iframe-android/main/public/empty-android-iframe.png)
+The same code on a browser will render the Iframe as expected:
+
+![Web iframe](https://raw.githubusercontent.com/psantos9/vue-capacitor-iframe-android/main/public/web-iframe.png)
+
+![Web behavior](https://raw.githubusercontent.com/psantos9/vue-capacitor-iframe-android/main/public/web-behavior.png)
+
+
+
+Empty android iframe:
+
 
 ## Type Support for `.vue` Imports in TS
 
