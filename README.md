@@ -25,11 +25,11 @@ const blob = new Blob(
 )
 const src = URL.createObjectURL(blob)
 const src2 = ref<string | null>(null)
-const init = async () => {
+;(async () => {
   src2.value = `data:text/html;base64,${btoa(await blob.text())}`
-}
-init()
+})()
 </script>
+
 
 ```
 
