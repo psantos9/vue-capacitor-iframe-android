@@ -1,10 +1,11 @@
 # vue-capacitor-iframe-android
 
-This template should help get you started developing with Vue 3 in Vite.
+Example project that reproduces [github issue 6377](https://github.com/ionic-team/capacitor/issues/6377)
 
-## Recommended IDE Setup
+## Issue description
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+Setting the iframe src
+![alt text](https://github.com/psantos9/vue-capacitor-iframe-android/blob/main/image.jpg?raw=true)
 
 ## Type Support for `.vue` Imports in TS
 
