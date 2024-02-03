@@ -11,7 +11,8 @@
     "type-check": "vue-tsc --build --force",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "format": "prettier --write src/",
-    "dev:android": "concurrently \"npm run dev\" \"NODE_ENV=development npx cap run android --target=192.168.1.16:5555\""
+    "dev:android:chromecast": "concurrently \"npm run dev\" \"NODE_ENV=development npx cap run android --target=192.168.1.16:5555\"",
+    "dev:android:emulator": "concurrently \"npm run dev\" \"NODE_ENV=development npx cap run android --target=Television_1080p_API_33\""
   },
   "dependencies": {
     "@capacitor/android": "^5.6.0",
