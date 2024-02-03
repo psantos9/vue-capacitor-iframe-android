@@ -4,6 +4,35 @@ Example project that reproduces [github issue 6377](https://github.com/ionic-tea
 
 ## Issue description
 
+This project has two iframes set side by side: the leftmost iframe's src is set as a URL.createObjectURL from a blob, the righmost iframe src is set as a base64 encoded string with the contents of that same blob.
+####Issue: The leftmost frame is not rendered in Android but renders in Web (browser).
+
+```
+<template>
+  <div class="h-screen flex items-center space-x-2 justify-center bg-gray-500">
+    <iframe class="w-[250px] h-[250px] bg-white" :src="src" />
+    <iframe v-if="src2 !== null" class="w-[250px] h-[250px] bg-white" :src="src2" />
+  </div>
+</template>
+
+<script lang="ts" setup>
+import { ref } from 'vue'
+const blob = new Blob(
+  [
+    '<div style="display: flex; align-items: center; justify-content: center; height: 100%; font-size: 1.5rem;">IFRAME CONTENT SHOWN</div>'
+  ],
+  { type: 'text/html' }
+)
+const src = URL.createObjectURL(blob)
+const src2 = ref<string | null>(null)
+const init = async () => {
+  src2.value = `data:text/html;base64,${btoa(await blob.text())}`
+}
+init()
+</script>
+
+```
+
 In Android, setting the iframe src with a URL.createObjectURL will result on an empty iframe as follows:
 ![Empty android iframe](https://raw.githubusercontent.com/psantos9/vue-capacitor-iframe-android/main/public/empty-android-iframe.png)
 
@@ -16,45 +45,5 @@ The same code on a browser will render the Iframe as expected:
 ![Web behavior](https://raw.githubusercontent.com/psantos9/vue-capacitor-iframe-android/main/public/web-behavior.png)
 
 
-
-Empty android iframe:
-
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
-
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
-
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+###Expected behavior:
+Leftmost iframe renders in Android and Web.
