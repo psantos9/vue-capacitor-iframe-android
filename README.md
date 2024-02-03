@@ -4,8 +4,13 @@ Example project that reproduces [github issue 6377](https://github.com/ionic-tea
 
 ## Issue description
 
-Setting the iframe src
-![alt text](https://github.com/psantos9/vue-capacitor-iframe-android/blob/main/image.jpg?raw=true)
+In Android, setting the iframe src with a URL.createObjectURL will result on
+
+![Web behavior](https://raw.githubusercontent.com/psantos9/vue-capacitor-iframe-android/main/public/web-behavior.png)
+
+![Android behavior](https://raw.githubusercontent.com/psantos9/vue-capacitor-iframe-android/main/public/android-behavior.png)
+
+![Empty android iframe](https://raw.githubusercontent.com/psantos9/vue-capacitor-iframe-android/main/public/empty-android-iframe.png)
 
 ## Type Support for `.vue` Imports in TS
 
